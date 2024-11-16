@@ -2,10 +2,11 @@
 <html>
   <head>
     <script>
-      // Conserve la route actuelle après redirection
-      const pathname = window.location.pathname;
-      const newPath = '/frontend-mentor-challenges' + pathname;
-      window.location.replace(newPath);
+      // Vérifie si le chemin commence déjà par `/frontend-mentor-challenges`
+      if (!location.pathname.startsWith('/frontend-mentor-challenges')) {
+         // Ajoute le chemin de base uniquement si ce n'est pas déjà fait
+         const newPath = '/frontend-mentor-challenges' + location.pathname;
+         window.location.replace(newPath);
     </script>
   </head>
   <body></body>
