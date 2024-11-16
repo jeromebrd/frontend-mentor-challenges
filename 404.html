@@ -2,12 +2,10 @@
 <html>
   <head>
     <script>
-      // Vérifie si l'utilisateur est déjà sur `index.html`
-      if (!location.pathname.startsWith('/frontend-mentor-challenges')) {
-        // Redirige vers la racine du projet en conservant la route
-        const newUrl = `/frontend-mentor-challenges${location.pathname}`;
-        window.location.replace(newUrl);
-      }
+      // Conserve la route actuelle après redirection
+      const pathname = window.location.pathname;
+      const newPath = '/frontend-mentor-challenges' + pathname;
+      window.location.replace(newPath);
     </script>
   </head>
   <body></body>
