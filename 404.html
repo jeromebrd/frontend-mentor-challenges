@@ -3,17 +3,11 @@
   <head>
     <meta http-equiv="refresh" content="0; url=/frontend-mentor-challenges" />
     <script>
-      const pathname = window.location.pathname;
-      if (pathname.startsWith('/frontend-mentor-challenges')) {
-        // Conserve la route actuelle et recharge l'index HTML
-        window.location.replace(
-          `/frontend-mentor-challenges${pathname.substring(
-            '/frontend-mentor-challenges'.length
-          )}`
-        );
-      } else {
-        // Sinon, redirige vers la racine
-        window.location.replace('/frontend-mentor-challenges');
+      // Vérifie si l'utilisateur est déjà sur `index.html`
+      if (!location.pathname.startsWith('/frontend-mentor-challenges')) {
+        // Redirige vers la racine du projet en conservant la route
+        const newUrl = `/frontend-mentor-challenges${location.pathname}`;
+        window.location.replace(newUrl);
       }
     </script>
   </head>
