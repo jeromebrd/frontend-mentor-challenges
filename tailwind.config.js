@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],
         outfit: ['Outfit', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
         // custom: [..., 'sans-serif'] new font family
       },
     },

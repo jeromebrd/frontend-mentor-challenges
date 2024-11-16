@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import qrCodeImg from './img/image-qr-code.png';
-import BackButton from '../../../components/BackButton';
+import LayoutChall from '../../../components/LayoutChall';
 
 const Card = ({ title, text }) => {
   return (
@@ -25,12 +25,9 @@ const QrCode = () => {
   };
 
   return (
-    <section className="relative w-full h-[100vh] flex justify-center items-center  ">
-      <BackButton path={'/challenges'} />
-      <div className=" bg-slate-300 h-full w-full flex items-center justify-center xl:h-[90%] xl:max-w-[80%] xl:rounded-xl">
-        <Card text={texts.text} title={texts.title} />
-      </div>
-    </section>
+    <LayoutChall className={'bg-slate-300'}>
+      <Card text={texts.text} title={texts.title} />
+    </LayoutChall>
   );
 };
 
