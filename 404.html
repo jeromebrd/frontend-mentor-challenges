@@ -1,8 +1,13 @@
-<!-- pour redigérer vers '/' sur github pages quand on rafraîchit -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="refresh" content="0; url=/" />
+    <script>
+      // Redirige les utilisateurs vers l'index HTML tout en conservant la route actuelle.
+      const pathname = window.location.pathname;
+      const redirectUrl = `${window.location.origin}${pathname}`;
+      window.location.replace(redirectUrl);
+    </script>
   </head>
   <body></body>
 </html>
