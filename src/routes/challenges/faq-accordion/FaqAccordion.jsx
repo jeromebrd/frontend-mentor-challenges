@@ -6,7 +6,7 @@ import iconPlus from './img/icon-plus.svg';
 import iconMinus from './img/icon-minus.svg';
 import { texts } from './texts/texts';
 
-const Droptown = ({ title, desc }) => {
+const Accordion = ({ title, desc }) => {
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
     setIsActive(!isActive);
@@ -26,7 +26,12 @@ const Droptown = ({ title, desc }) => {
         )}
       </div>
       {/* text desc */}
-      <div className={`py-5 text-sm ${isActive ? '' : 'hidden'} md:text-base`}>
+      {/* Animation : Accordion smooth */}
+      <div
+        className={`text-sm overflow-hidden transition-all duration-200 ease-linear ${
+          isActive ? 'max-h-32 py-5' : 'max-h-0'
+        } md:text-base`}
+      >
         <p className="text-[#8B6890]">{desc}</p>
       </div>
     </div>
@@ -54,12 +59,12 @@ const FaqAccordion = () => {
               <span className="text-3xl md:text-5xl">s</span>
             </h1>
           </div>
-          {/* droptowns */}
+          {/* Accordions */}
           <div className="h-full flex flex-col justify-between">
             {/* affiche les droptowns avec un séparateur sauf pour le dernier élément */}
             {texts.map((text, i) => (
               <React.Fragment key={i}>
-                <Droptown title={text.title} desc={text.desc} />
+                <Accordion title={text.title} desc={text.desc} />
                 {i < texts.length - 1 && <hr />}
               </React.Fragment>
             ))}
@@ -69,7 +74,7 @@ const FaqAccordion = () => {
     </LayoutChall>
   );
 };
-Droptown.propTypes = {
+Accordion.propTypes = {
   title: PropTypes.string,
   desc: PropTypes.string,
 };
