@@ -1,41 +1,45 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import ChallengesPage from './routes/challenges/ChallengesPage';
 import App from './App';
 import Homepage from './routes/Homepage';
 import QrCode from './routes/challenges/qrcode/QrCode';
 import SocialLinkProfile from './routes/challenges/social-link-profile/SocialLinkProfile';
 import NotFound from './routes/NotFound';
+import FaqAccordion from './routes/challenges/faq-accordion/FaqAccordion';
 
-export const router = createBrowserRouter(
-  [
-    {
-      path: '/',
-      element: <App />,
-      errorElement: <NotFound />,
-      children: [
-        {
-          path: '',
-          element: <Homepage />,
-        },
-        {
-          path: 'challenges',
-          element: <ChallengesPage />,
-        },
-        {
-          path: 'challenges/qrcode',
-          element: <QrCode />,
-        },
-        {
-          path: 'challenges/social-link-profile',
-          element: <SocialLinkProfile />,
-        },
-      ],
-      future: {
-        v7_skipActionErrorRevalidation: true,
-      },
-    },
-  ],
+// createHashRouter a la place de createBrowserRouter pour github page
+export const router = createHashRouter([
   {
-    basename: '/frontend-mentor-challenges', // Chemin de base pour GitHub Pages
-  }
-);
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        path: '',
+        element: <Homepage />,
+      },
+      {
+        path: 'challenges',
+        element: <ChallengesPage />,
+      },
+      {
+        path: 'challenges/qrcode',
+        element: <QrCode />,
+      },
+      {
+        path: 'challenges/social-link-profile',
+        element: <SocialLinkProfile />,
+      },
+      {
+        path: 'challenges/faq-accordion',
+        element: <FaqAccordion />,
+      },
+      {
+        path: '*',
+        element: <NotFound />,
+      },
+    ],
+    future: {
+      v7_skipActionErrorRevalidation: true,
+    },
+  },
+]);

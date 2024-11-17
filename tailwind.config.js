@@ -7,6 +7,7 @@ export default {
         sans: ['Roboto', 'sans-serif'],
         outfit: ['Outfit', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
+        worksans: ['Work Sans', 'sans-serif'],
         // custom: [..., 'sans-serif'] new font family
       },
     },

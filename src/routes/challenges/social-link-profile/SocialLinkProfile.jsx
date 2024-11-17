@@ -4,7 +4,7 @@ import LayoutChall from '../../../components/LayoutChall';
 const Card = ({ data }) => {
   const { name, city, desc, socialMediaList } = data;
   return (
-    <div className="h-[70%] w-[90%] max-w-[400px] bg-[#1E1E1E] rounded-xl border border-[#333333] flex justify-center font-inter xl:h-[75%]">
+    <div className="min-h-[70%] w-[90%] max-w-[400px] bg-[#1E1E1E] rounded-xl border border-[#333333] flex justify-center font-inter xl:h-[75%]">
       <div className="py-9 w-[85%] px-1 flex flex-col items-center justify-between ">
         {/* avatar */}
         <img

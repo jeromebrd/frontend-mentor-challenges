@@ -7,7 +7,7 @@ const BackButton = ({ path }) => {
   return (
     <NavLink
       to={path}
-      className="absolute top-5 left-2 ml-5 flex items-center justify-center gap-2 bg-white px-4 py-2 shadow-md font-bold rounded-full text-slate-800 lg:shadow-lg"
+      className="absolute top-5 left-2 ml-5 flex items-center justify-center gap-2 bg-white px-4 py-2 shadow-md font-bold rounded-full text-slate-800 lg:shadow-lg z-30"
     >
       <FontAwesomeIcon icon={faArrowLeft} />
       <span className="hidden md:inline lg:text-xs">Back</span>
