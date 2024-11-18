@@ -6,6 +6,7 @@ import QrCode from './routes/challenges/qrcode/QrCode';
 import SocialLinkProfile from './routes/challenges/social-link-profile/SocialLinkProfile';
 import NotFound from './routes/NotFound';
 import FaqAccordion from './routes/challenges/faq-accordion/FaqAccordion';
+import BlogPreviewCard from './routes/challenges/blog-preview-card/BlogPreviewCard';
 
 // createHashRouter a la place de createBrowserRouter pour github page
 export const router = createHashRouter([
@@ -32,6 +33,10 @@ export const router = createHashRouter([
       {
         path: 'challenges/faq-accordion',
         element: <FaqAccordion />,
+      },
+      {
+        path: 'challenges/blog-preview-card',
+        element: <BlogPreviewCard />,
       },
       {
         path: '*',

@@ -8,6 +8,7 @@ export default {
         outfit: ['Outfit', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
         worksans: ['Work Sans', 'sans-serif'],
+        figtree: ['Figtree', 'sans-serif'],
         // custom: [..., 'sans-serif'] new font family
       },
     },

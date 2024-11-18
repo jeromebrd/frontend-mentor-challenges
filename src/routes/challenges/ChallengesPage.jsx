@@ -6,28 +6,34 @@ const ChallengesPage = () => {
       <BackButton path={'/'} />
       <div className="w-[90%] mx-auto lg:max-w-[80%] pt-16">
         <h1 className="text-center font-outfit text-xl text-gray-800 uppercase font-bold md:text-3xl">
-          Tous mes challenges frontend
+          All my frontend challenges
         </h1>
         <span className="block h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 my-8"></span>
         {/* Cards container */}
-        <div className="flex justify-center gap-5 flex-wrap">
+        <div className="flex justify-center md:justify-start gap-5 flex-wrap">
           <CardChallenge
             path={'qrcode'}
             title={'Qr Code'}
-            keywords={['responsive', 'card', 'html/css']}
+            keywords={['responsive', 'card']}
             challNb={'1'}
           />
           <CardChallenge
             path={'social-link-profile'}
             title={'Social link profile'}
-            keywords={['responsive', 'card', 'html/css']}
+            keywords={['responsive', 'card']}
             challNb={'2'}
           />
           <CardChallenge
             path={'faq-accordion'}
             title={'faq accordion'}
-            keywords={['responsive', 'html/css', 'js']}
+            keywords={['responsive']}
             challNb={'3'}
+          />
+          <CardChallenge
+            path={'blog-preview-card'}
+            title={'blog preview'}
+            keywords={['responsive', 'card']}
+            challNb={'4'}
           />
         </div>
       </div>

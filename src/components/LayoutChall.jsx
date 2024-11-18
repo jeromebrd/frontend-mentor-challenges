@@ -3,14 +3,14 @@ import BackButton from '../components/BackButton';
 
 const LayoutChall = ({ className, children }) => {
   return (
-    <div className="relative w-full h-[100dvh] flex justify-center items-center  ">
+    <section className="relative w-full h-[100dvh] flex justify-center items-center  ">
       <BackButton path={'/challenges'} />
       <main
-        className={`${className} h-full w-full flex items-center justify-center xl:h-[90%] xl:max-w-[80%] xl:rounded-xl`}
+        className={`${className} relative h-full w-full flex items-center justify-center xl:h-[90%] xl:max-w-[80%] xl:rounded-3xl`}
       >
         {children}
       </main>
-    </div>
+    </section>
   );
 };
 LayoutChall.propTypes = {
