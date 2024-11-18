@@ -28,8 +28,8 @@ const Accordion = ({ title, desc }) => {
       {/* text desc */}
       {/* Animation : Accordion smooth */}
       <div
-        className={`text-sm overflow-hidden transition-all duration-200 ease-linear ${
-          isActive ? 'max-h-32 py-5' : 'max-h-0'
+        className={`text-sm overflow-hidden transition-all duration-200 ease-in-out ${
+          isActive ? 'max-h-32 overflow-y-auto py-5' : 'max-h-0'
         } md:text-base`}
       >
         <p className="text-[#8B6890]">{desc}</p>
@@ -48,7 +48,7 @@ const FaqAccordion = () => {
       <div
         className={`bg-[url('/img/background-faq-accordion.svg')] absolute top-0 left-O w-full h-1/3 xl:rounded-t-xl`}
       ></div>
-      <div className="bg-white min-h-[60%] max-h-[80%] overflow-y-auto max-w-[90%] w-[90%] px-8  rounded-xl z-10 md:w-[80%] md:pb-1 lg:w-[50%]">
+      <div className="bg-white max-h-[80%]  overflow-y-auto max-w-[90%] w-[90%] px-8  rounded-xl z-10 md:w-[80%]  md:pb-1 lg:w-[50%]">
         {/* container text */}
         <div className="flex flex-col h-full pb-4">
           {/* title FAQS */}
