@@ -10,7 +10,7 @@ const Homepage = () => {
         </h1>
         <NavLink
           className={
-            'flex items-center gap-2 text-white font-bold text-sm bg-black py-3 px-5 rounded-full    sm:text-lg lg:self-end'
+            'flex items-center gap-2 text-white font-bold text-sm bg-black py-3 px-5 rounded-full hover:translate-x-2 transition-transform duration-150 sm:text-lg lg:self-end'
           }
           to={'challenges'}
         >

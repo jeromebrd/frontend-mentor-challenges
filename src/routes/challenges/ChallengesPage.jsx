@@ -35,6 +35,12 @@ const ChallengesPage = () => {
             keywords={['responsive', 'card']}
             challNb={'4'}
           />
+          <CardChallenge
+            path={'pricing-toggle'}
+            title={'Pricing with toggle'}
+            keywords={['responsive', 'toggle button', '3 cards prices']}
+            challNb={'5'}
+          />
         </div>
       </div>
     </section>

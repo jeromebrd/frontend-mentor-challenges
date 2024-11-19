@@ -9,6 +9,7 @@ export default {
         inter: ['Inter', 'sans-serif'],
         worksans: ['Work Sans', 'sans-serif'],
         figtree: ['Figtree', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
         // custom: [..., 'sans-serif'] new font family
       },
     },

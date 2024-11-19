@@ -7,6 +7,7 @@ import SocialLinkProfile from './routes/challenges/social-link-profile/SocialLin
 import NotFound from './routes/NotFound';
 import FaqAccordion from './routes/challenges/faq-accordion/FaqAccordion';
 import BlogPreviewCard from './routes/challenges/blog-preview-card/BlogPreviewCard';
+import PricingToggle from './routes/challenges/pricing-toggle/PricingToggle';
 
 // createHashRouter a la place de createBrowserRouter pour github page
 export const router = createHashRouter([
@@ -37,6 +38,10 @@ export const router = createHashRouter([
       {
         path: 'challenges/blog-preview-card',
         element: <BlogPreviewCard />,
+      },
+      {
+        path: 'challenges/pricing-toggle',
+        element: <PricingToggle />,
       },
       {
         path: '*',

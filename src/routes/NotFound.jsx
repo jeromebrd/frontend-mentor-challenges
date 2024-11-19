@@ -6,10 +6,10 @@ const NotFound = () => {
         Oops... Error <span className="text-red-500 font-semibold">404</span> !
       </h1>
       <NavLink
-        to={'/'}
+        to={'/challenges'}
         className="border border-gray-200 p-4 rounded-xl hover:text-red-500  hover:border-red-500 transition-colors duration-250"
       >
-        Retour à l&apos;accueil
+        Return to challenges
       </NavLink>
     </section>
   );
