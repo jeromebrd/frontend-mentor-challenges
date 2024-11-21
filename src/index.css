@@ -9,6 +9,10 @@
   body {
     background-color: #f1f5f9;
   }
+  button,
+  a {
+    cursor: pointer;
+  }
 }
 
 /* pricing toggle component */
@@ -22,10 +26,13 @@
     background: linear-gradient(to right bottom, #a3a8f0, #696fdd);
     border-radius: 5rem;
     opacity: 1;
-    transition: opacity 0.25s ease;
-  }
-  &:active {
-    opacity: 0.75;
+    transition: opacity 0.2s ease;
+    &:active {
+      opacity: 0.5;
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
   input[type='checkbox']::after {
     content: '';
