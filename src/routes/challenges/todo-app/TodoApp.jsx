@@ -1,6 +1,8 @@
 import BackButton from '../../../components/BackButton';
 import Todo from './components/Todo';
 import FiltersBtn from './components/FiltersBtn';
+import imgSun from './img/icon-sun.svg';
+import imgMoon from './img/icon-moon.svg';
 import { Fragment, useState } from 'react';
 import {
   DndContext,
@@ -19,9 +21,6 @@ import {
 } from '@dnd-kit/sortable';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon as faMoonSolid } from '@fortawesome/free-solid-svg-icons';
-import { faMoon as faMoonRegular } from '@fortawesome/free-regular-svg-icons';
 /** 
  * TodoApp Component
  * 2 components in the ./components folder (Todo and FiltersBtn)
@@ -81,8 +80,15 @@ const Hr = () => {
 const TodoApp = () => {
   const [isDark, setIsDark] = useState(false);
   const [newTodo, setNewTodo] = useState('');
-  const [id, setId] = useState(1); // 0 == falsy => dnd not possible
-  const [todos, setTodos] = useState([]);
+  const [id, setId] = useState(7); // 0 == falsy => dnd not possible
+  const [todos, setTodos] = useState([
+    { id: 1, text: 'Complete online Javascript course', done: true },
+    { id: 2, text: 'Jog around the park 3x', done: false },
+    { id: 3, text: '10 minutes medidation', done: false },
+    { id: 4, text: 'Read for 1 hour', done: false },
+    { id: 5, text: 'Pick up groceries', done: false },
+    { id: 6, text: 'Complete Todo App on Frontend Mentor', done: false },
+  ]);
   const [filter, setFilter] = useState('all');
   const handleTheme = () => setIsDark(!isDark);
   const handleChange = (e) => {
@@ -102,6 +108,7 @@ const TodoApp = () => {
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
+  console.log(todos);
 
   /**
    * Sensors in dnd-kit detect and manage user interactions (mouse, touch, or keyboard)
@@ -187,16 +194,18 @@ const TodoApp = () => {
                   Todo
                 </h1>
                 {isDark ? (
-                  <FontAwesomeIcon
-                    icon={faMoonSolid}
-                    className="cursor-pointer text-2xl lg:text-4xl text-[#fafafa]"
+                  <img
+                    src={imgSun}
+                    className="cursor-pointer text-[#fafafa]"
                     onClick={handleTheme}
+                    alt="icon sun"
                   />
                 ) : (
-                  <FontAwesomeIcon
-                    icon={faMoonRegular}
-                    className="cursor-pointer text-2xl lg:text-4xl text-[#fafafa]"
+                  <img
+                    src={imgMoon}
+                    className="cursor-pointer text-[#fafafa]"
                     onClick={handleTheme}
+                    alt="icon moon"
                   />
                 )}
               </div>
@@ -264,6 +273,9 @@ const TodoApp = () => {
                   setFilter={setFilter}
                   className={'justify-center'}
                 />
+              </div>
+              <div className="w-full flex items-center justify-center mt-12 text-[#9394a5]">
+                <p>Drag and drop to reorder list</p>
               </div>
             </div>
           </main>
