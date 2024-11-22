@@ -9,6 +9,7 @@ const Card = () => {
       className="relative cursor-pointer bg-white h-[500px] w-[327px] rounded-3xl border border-gray-950 p-6 pb-0"
     >
       <div className="absolute top-2 -right-3  bg-gray-950 w-[100.5%] h-[101%] rounded-[2rem] -z-10" />
+
       {/* illustration */}
       <div className="h-full flex flex-col gap-0.5">
         <img

@@ -5,7 +5,7 @@ const CardChallenge = ({ path, title, keywords, challNb }) => {
   return (
     <div
       className={
-        'relative border border-gray-200 h-[150px] bg-white shadow-xl rounded-md  w-full  p-2 flex flex-col items-center justify-evenly gap-3 sm:w-[200px] md:h-[200px]'
+        'relative h-[150px] bg-white shadow-xl rounded-md  w-full  p-2 flex flex-col items-center justify-evenly gap-3 scale-100 hover:scale-105 transition duration-150 ease-in will-change-transform sm:w-[200px] md:h-[200px]'
       }
     >
       <NavLink

@@ -8,6 +8,7 @@ import NotFound from './routes/NotFound';
 import FaqAccordion from './routes/challenges/faq-accordion/FaqAccordion';
 import BlogPreviewCard from './routes/challenges/blog-preview-card/BlogPreviewCard';
 import PricingToggle from './routes/challenges/pricing-toggle/PricingToggle';
+import TodoApp from './routes/challenges/todo-app/TodoApp';
 
 // createHashRouter a la place de createBrowserRouter pour github page
 export const router = createHashRouter([
@@ -42,6 +43,10 @@ export const router = createHashRouter([
       {
         path: 'challenges/pricing-toggle',
         element: <PricingToggle />,
+      },
+      {
+        path: 'challenges/todo-app',
+        element: <TodoApp />,
       },
       {
         path: '*',

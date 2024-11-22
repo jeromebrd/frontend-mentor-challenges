@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -10,6 +11,7 @@ export default {
         worksans: ['Work Sans', 'sans-serif'],
         figtree: ['Figtree', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
+        josefin: ['Josefin Sans', 'sans-serif'],
         // custom: [..., 'sans-serif'] new font family
       },
     },
