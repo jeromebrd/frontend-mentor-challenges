@@ -5,7 +5,11 @@ const FilterBtn = ({ onClick, filter, children }) => {
   return (
     <button
       type="button"
-      className={`${filter === filterName ? 'text-[#3a7bfd]' : ''}`}
+      className={`${
+        filter === filterName
+          ? 'text-[#3a7bfd]'
+          : 'hover:text-[#484b6a] dark:hover:text-[#e4e5f1]'
+      } transition-all duration-150`}
       onClick={onClick}
     >
       {children}
