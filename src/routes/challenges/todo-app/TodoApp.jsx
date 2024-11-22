@@ -48,6 +48,9 @@ const TodoApp = () => {
   const updateTodo = (id) => {
     setTodos(todos.map((t) => (t.id === id ? { ...t, done: !t.done } : t)));
   };
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
 
   // Filter todos by filter selected
   const filteredTodos = todos.filter((todo) => {
@@ -83,13 +86,13 @@ const TodoApp = () => {
               {isDark ? (
                 <FontAwesomeIcon
                   icon={faMoonSolid}
-                  className="text-2xl text-[#fafafa]"
+                  className="cursor-pointer text-2xl lg:text-4xl text-[#fafafa]"
                   onClick={handleTheme}
                 />
               ) : (
                 <FontAwesomeIcon
                   icon={faMoonRegular}
-                  className="text-2xl text-[#fafafa]"
+                  className="cursor-pointer text-2xl lg:text-4xl text-[#fafafa]"
                   onClick={handleTheme}
                 />
               )}
@@ -118,6 +121,7 @@ const TodoApp = () => {
                       text={todo.text}
                       done={todo.done}
                       updateTodo={updateTodo}
+                      deleteTodo={deleteTodo}
                       id={todo.id}
                     />
                     {i < todos.length - 1 && <Hr />}
