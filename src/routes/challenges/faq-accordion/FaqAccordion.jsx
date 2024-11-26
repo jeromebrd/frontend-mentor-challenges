@@ -5,8 +5,10 @@ import iconStar from './img/icon-star.svg';
 import iconPlus from './img/icon-plus.svg';
 import iconMinus from './img/icon-minus.svg';
 import { texts } from './texts/texts';
+import { useDocumentTitle } from '../../../hooks/useDocumentTitle';
 
 const Accordion = ({ title, desc }) => {
+  useDocumentTitle('Frontend mentor | FAQ accordion');
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
     setIsActive(!isActive);

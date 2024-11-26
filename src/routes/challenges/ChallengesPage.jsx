@@ -1,6 +1,8 @@
 import CardChallenge from '../../components/CardChallenge';
 import BackButton from '../../components/BackButton';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 const ChallengesPage = () => {
+  useDocumentTitle('Frontend mentor | Challenges');
   return (
     <section className="relative ">
       <BackButton path={'/'} />
@@ -46,6 +48,12 @@ const ChallengesPage = () => {
             title={'Todo App'}
             keywords={['responsive', 'todo app', 'filter', 'drag/drop']}
             challNb={'6'}
+          />
+          <CardChallenge
+            path={'interactive-rating'}
+            title={'Interactive Rating'}
+            keywords={['responsive', 'rating', 'component']}
+            challNb={'7'}
           />
         </div>
       </div>

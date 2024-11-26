@@ -1,6 +1,7 @@
 import BackButton from '../../../components/BackButton';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useDocumentTitle } from '../../../hooks/useDocumentTitle';
 /* 
 - gradient : bg-gradient-to-tl from-[#a3a8f0] to #696fdd
 - Very Light Grayish Blue: 	#f6f6fe
@@ -69,6 +70,7 @@ const Card = ({ className, main = false, isChecked, title }) => {
 };
 
 const PricingToggle = () => {
+  useDocumentTitle('Frontend mentor | Pricing toggle');
   const [isChecked, setIsChecked] = useState(false);
   return (
     <>

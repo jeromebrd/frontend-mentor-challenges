@@ -20,6 +20,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
+import { useDocumentTitle } from '../../../hooks/useDocumentTitle';
 
 /** 
  * TodoApp Component
@@ -78,6 +79,7 @@ const Hr = () => {
 };
 
 const TodoApp = () => {
+  useDocumentTitle('Frontend mentor | TodoApp');
   const [isDark, setIsDark] = useState(false);
   const [newTodo, setNewTodo] = useState('');
   const [id, setId] = useState(7); // 0 == falsy => dnd not possible

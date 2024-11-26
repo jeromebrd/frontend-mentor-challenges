@@ -1,4 +1,5 @@
 import LayoutChall from '../../../components/LayoutChall';
+import { useDocumentTitle } from '../../../hooks/useDocumentTitle';
 import illustration from './img/illustration-article.svg';
 import avatar from './img/image-avatar.webp';
 
@@ -53,6 +54,7 @@ const Card = () => {
 };
 
 const BlogPreviewCard = () => {
+  useDocumentTitle('Frontend mentor | Blog preview card');
   return (
     <>
       <LayoutChall className={'font-figtree bg-[#F4D04E] text-gray-950 -z-10 '}>

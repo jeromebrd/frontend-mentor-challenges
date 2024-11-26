@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import qrCodeImg from './img/image-qr-code.png';
 import LayoutChall from '../../../components/LayoutChall';
+import { useDocumentTitle } from '../../../hooks/useDocumentTitle';
 
 const Card = ({ title, text }) => {
   return (
@@ -19,6 +20,7 @@ const Card = ({ title, text }) => {
 };
 
 const QrCode = () => {
+  useDocumentTitle('Frontend mentor | QrCode');
   const texts = {
     title: 'Improve your front-end skills by building projects',
     text: 'Scan the QR code to visit Frontend Mentor and take your coding skills to the next level',

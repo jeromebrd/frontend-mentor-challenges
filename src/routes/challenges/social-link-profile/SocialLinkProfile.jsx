@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import imgProfile from './img/avatar-jessica.jpeg';
 import LayoutChall from '../../../components/LayoutChall';
+import { useDocumentTitle } from '../../../hooks/useDocumentTitle';
 const Card = ({ data }) => {
   const { name, city, desc, socialMediaList } = data;
   return (
@@ -43,7 +44,7 @@ const Card = ({ data }) => {
   );
 };
 const SocialLinkProfile = () => {
-  //{`text-[#C4F82A]`}
+  useDocumentTitle('Frontend mentor | Social Link');
   const data = {
     name: 'Jessica Randall',
     city: 'London, United Kingdom',

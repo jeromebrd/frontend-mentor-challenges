@@ -12,6 +12,7 @@ export default {
         figtree: ['Figtree', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
         josefin: ['Josefin Sans', 'sans-serif'],
+        overpass: ['Overpass', 'sans-serif'],
         // custom: [..., 'sans-serif'] new font family
       },
     },
