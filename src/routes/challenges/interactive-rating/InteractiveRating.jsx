@@ -1,52 +1,64 @@
 import { useDocumentTitle } from '../../../hooks/useDocumentTitle';
-import PropTypes from 'prop-types';
 import LayoutChall from '../../../components/LayoutChall';
-import iconStar from './img/icon-star.svg';
+import ThanksComponent from './components/ThanksComponent';
 import { useState } from 'react';
-/* ### Primary
+import RatingComponent from './components/RatingComponent';
 
-- Orange: 	#fb7413
-
-### Neutral
-
-- White: 	#ffffff
-- Light Grey: 	#959eac
-- Dark Blue: 	#252d37
-- Very Dark Blue: 	#121417*/
-
-const InputRating = ({ rating, selectedRating, setSelectedRating }) => {
-  const isChecked = selectedRating === rating;
-  return (
-    <div
-      className={`relative flex items-center justify-center h-12 w-12 rounded-full bg-slate-700 cursor-pointer hover:bg-[#fb7413] hover:text-[#252d37] transition-colors duration-200 ease-in-out active:bg-white active:text-[#252d37] ${
-        isChecked ? 'text-[#252d37] bg-white' : ''
-      }`}
-      onClick={() => setSelectedRating(rating)}
-    >
-      <input
-        type="radio"
-        name={`rating-${rating}`}
-        id={`rating-${rating}`}
-        value={rating}
-        className="hidden"
-        checked={isChecked}
-        onChange={() => setSelectedRating(rating)}
-      />
-      <label
-        htmlFor={`rating-${rating}`}
-        className="self-center cursor-pointer font-bold"
-      >
-        {rating}
-      </label>
-    </div>
-  );
-};
-
+/**
+ * InteractiveRating Component
+ *
+ * A functional React component for an interactive rating system, where users
+ * can select a rating from 1 to 5 and submit their feedback. After submission,
+ * a thank-you message is displayed along with the selected rating.
+ *
+ * Features:
+ * - Users can select a rating from a predefined range (1-5).
+ * - The component validates that a rating is selected before submission.
+ * - After submission, the interface switches to a thank-you message.
+ * - Utilizes custom hooks (`useDocumentTitle`) for setting the document title.
+ *
+ * Props:
+ * None.
+ *
+ * State:
+ * - `selectedRating` (number): Stores the currently selected rating (default: 0).
+ * - `isSubmitted` (boolean): Tracks whether the rating has been submitted (default: false).
+ *
+ * Dependencies:
+ * - `LayoutChall`: A wrapper component for styling and layout.
+ * - `RatingComponent`: Handles the rating selection and submission form.
+ * - `ThanksComponent`: Displays the thank-you message after submission.
+ *
+ * Functions:
+ * - `handleSubmit(e)`: Handles the form submission. Ensures a rating is selected
+ *   before setting the submission state to true. Logs a message if no rating is selected.
+ *
+ * Styling:
+ * - Uses TailwindCSS for responsive and visually appealing styling.
+ * - Includes a radial gradient background and hover effects.
+ *
+ * Returns:
+ * - The rendered component contains a rating form if `isSubmitted` is false,
+ *   or a thank-you message otherwise.
+ *
+ * Example Usage:
+ * ```
+ * <InteractiveRating />
+ * ```
+ */
 const InteractiveRating = () => {
-  const ratings = [1, 2, 3, 4, 5];
-  const [selectedRating, setSelectedRating] = useState(0);
-
   useDocumentTitle('Frontend mentor | Interactive Rating');
+  const [selectedRating, setSelectedRating] = useState(0);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (selectedRating > 0) {
+      setIsSubmitted(true);
+    } else {
+      console.log('No rating selected');
+    }
+  };
   return (
     <>
       <LayoutChall className={'bg-[#121417] text-[#959eac] font-overpass'}>
@@ -57,47 +69,19 @@ const InteractiveRating = () => {
               'radial-gradient(circle at 50% -30%,	rgb(149, 158, 172,0.35), #252d37,	rgb(18, 20, 23, 0.5))',
           }}
         >
-          {/* icon */}
-          <div className="h-12 w-12 bg-slate-700 rounded-full self-start flex items-center justify-center">
-            <img src={iconStar} alt="icon star" />
-          </div>
-          {/* title */}
-          <h1 className="text-white text-2xl">How did we go?</h1>
-          {/* content */}
-          <p>
-            Please let us know how we did with your support request. All
-            feedback is appreciated to help us improve our offering!
-          </p>
-          {/* form */}
-          <form className="flex flex-col w-full gap-8">
-            <div className="flex justify-between w-full ">
-              {/* rating 1-5 */}
-              {ratings.map((rating) => (
-                <InputRating
-                  rating={rating}
-                  key={rating}
-                  selectedRating={selectedRating}
-                  setSelectedRating={setSelectedRating}
-                />
-              ))}
-            </div>
-
-            {/* submit */}
-            <button
-              type="submit"
-              className="uppercase bg-[#fb7413] rounded-full py-3 text-[#121417] font-bold tracking-wide"
-            >
-              Submit
-            </button>
-          </form>
+          {!isSubmitted ? (
+            <RatingComponent
+              selectedRating={selectedRating}
+              setSelectedRating={setSelectedRating}
+              handleSubmit={handleSubmit}
+            />
+          ) : (
+            <ThanksComponent rating={selectedRating} />
+          )}
         </div>
       </LayoutChall>
     </>
   );
 };
-InputRating.propTypes = {
-  rating: PropTypes.number.isRequired,
-  selectedRating: PropTypes.number.isRequired,
-  setSelectedRating: PropTypes.func.isRequired,
-};
+
 export default InteractiveRating;
