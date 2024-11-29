@@ -13,6 +13,7 @@ export default {
         montserrat: ['Montserrat', 'sans-serif'],
         josefin: ['Josefin Sans', 'sans-serif'],
         overpass: ['Overpass', 'sans-serif'],
+        plusjakarta: ['Plus Jakarta Sans', 'sans-serif'],
         // custom: [..., 'sans-serif'] new font family
       },
     },

@@ -21,7 +21,9 @@ const CardChallenge = ({ path, title, keywords, challNb }) => {
         {challNb}
       </span>
       {/* title card */}
-      <p className="uppercase font-outfit font-bold text-violet-500">{title}</p>
+      <p className="uppercase text-center font-outfit font-bold text-violet-500">
+        {title}
+      </p>
       {/* key words */}
       <ul className="flex flex-wrap  justify-center items-center text-xs gap-0.5 text-gray-400 w-full ">
         {keywords.map((word, i) => (

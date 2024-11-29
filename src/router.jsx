@@ -10,6 +10,8 @@ import BlogPreviewCard from './routes/challenges/blog-preview-card/BlogPreviewCa
 import PricingToggle from './routes/challenges/pricing-toggle/PricingToggle';
 import TodoApp from './routes/challenges/todo-app/TodoApp';
 import InteractiveRating from './routes/challenges/interactive-rating/InteractiveRating';
+import MortgageRepayment from './routes/challenges/mortgage-repayment-calculator/MortgageRepayment';
+
 // createHashRouter a la place de createBrowserRouter pour github page
 export const router = createHashRouter([
   {
@@ -51,6 +53,10 @@ export const router = createHashRouter([
       {
         path: 'challenges/interactive-rating',
         element: <InteractiveRating />,
+      },
+      {
+        path: 'challenges/mortgage-repayment-calculator',
+        element: <MortgageRepayment />,
       },
       {
         path: '*',

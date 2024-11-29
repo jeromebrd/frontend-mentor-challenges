@@ -55,6 +55,12 @@ const ChallengesPage = () => {
             keywords={['responsive', 'rating', 'component']}
             challNb={'7'}
           />
+          <CardChallenge
+            path={'mortgage-repayment-calculator'}
+            title={'Mortgage Repayment Calculator'}
+            keywords={['responsive', 'calcutor']}
+            challNb={'8'}
+          />
         </div>
       </div>
     </section>
