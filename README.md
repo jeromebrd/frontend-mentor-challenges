@@ -3,7 +3,7 @@
 
 Find all my challenges completed via [Frontend Mentor](https://www.frontendmentor.io) 
 
-## Tools used
+## Tools used 🛠
 - **React** and **tailwind**  
 - **fontAwesome** and **fonts google**
 - **dnd kit** ( drag and drop in **_/todo-app_** )
