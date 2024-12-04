@@ -1,15 +1,14 @@
-export const calculateMonthlyPayment = (amount, rate, years, type) => {
+export const calculateMonthlyPayment = (amount, rate, years) => {
   let months = years * 12; // nb monthly
   let monthlyRate = rate / 12 / 100;
-  if (type === 'repayment') {
-    return (
-      (amount * monthlyRate) /
-      (1 - Math.pow(1 + monthlyRate, -months)).toFixed(2)
-    );
-  } else if (type === 'interest') {
-    return (amount * monthlyRate).toFixed(2);
-  }
-  return 0; //default type
+  return (
+    (amount * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -months)).toFixed(2)
+  );
+};
+export const calculateTotalInterest = (totalRepay, amount) => {
+  const totalInterest = totalRepay - amount;
+
+  return totalInterest.toFixed(2); // Résultat limité à 2 décimales
 };
 
 export const calculateTotalCost = (monthlyPayment, years) => {

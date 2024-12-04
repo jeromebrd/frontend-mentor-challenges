@@ -1,8 +1,9 @@
 import LayoutChall from '../../../components/LayoutChall';
+import TypeChoice from './components/TypeChoice';
+import RepaymentCompleted from './components/RepaymentCompleted';
 import { useState } from 'react';
 import { calculateMonthlyPayment, calculateTotalCost } from './utils/utils';
 import iconCalculator from './img/icon-calculator.svg';
-import PropTypes from 'prop-types';
 
 /* Lime: #d7da2e
 Red: #d73327
@@ -14,53 +15,12 @@ Slate 500: #6b93a8
 Slate 700: #4d6e7e
 Slate 900: #122e3f */
 
-const TypeChoice = ({ label, title, selectedType, setSelectedType }) => {
-  const isChecked = selectedType === label;
-  return (
-    <div
-      className={`border cursor-pointer ${
-        isChecked
-          ? 'border-[#d7da2e] bg-[#d7da2e] bg-opacity-15'
-          : 'border-[#4d6e7e]'
-      } rounded-md px-4 py-2 h-10 flex  items-center gap-4`}
-      onClick={() => setSelectedType(label)}
-    >
-      <input
-        type="radio"
-        name="type"
-        id={label}
-        checked={isChecked}
-        onChange={() => setSelectedType(label)}
-        className={'peer hidden'}
-      />
-      <span
-        className={`h-3 w-3 rounded-full  border border-[#122e3f]  ${
-          isChecked
-            ? 'border-[#d7da2e] bg-[#d7da2e] shadow-[inset_0_0_0_1.5px_white] '
-            : 'bg-white'
-        }`}
-      ></span>
-      <label htmlFor={label} className="font-bold">
-        {title}
-      </label>
-    </div>
-  );
-};
-
-TypeChoice.propTypes = {
-  title: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  selectedType: PropTypes.string.isRequired,
-  setSelectedType: PropTypes.func.isRequired,
-};
-
 const MortgageRepayment = () => {
   const [mgAmountValue, setMgAmountValue] = useState('');
   const [mgTermValue, setMgTermValue] = useState('');
   const [mgRateValue, setMgRateValue] = useState('');
   const [selectedType, setSelectedType] = useState('');
-  const [monthlyRepayment, setMonthlyRepayment] = useState(0);
-  console.log(mgAmountValue, mgTermValue, mgRateValue);
+  const [resultsToDisplay, setResultsToDisplay] = useState(false);
 
   const clearAll = () => {
     setMgAmountValue('');
@@ -71,27 +31,37 @@ const MortgageRepayment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let monthlyPayment = 0;
-    let totalCost;
-    if (selectedType === 'repayment' || selectedType === 'interest') {
-      monthlyPayment = calculateMonthlyPayment(
+    let results = {};
+    if (!mgRateValue || !mgAmountValue || !mgTermValue || !selectedType) {
+      setResultsToDisplay(false);
+      return;
+    }
+    if (selectedType === 'repayment') {
+      const monthlyPayment = calculateMonthlyPayment(
         mgAmountValue,
         mgRateValue,
         mgTermValue,
         selectedType
       );
-      totalCost = calculateTotalCost(monthlyPayment, mgTermValue);
+      const totalRepay = calculateTotalCost(monthlyPayment, mgTermValue);
+      results = { monthlyPayment, totalRepay };
+    } else if (selectedType === 'interest') {
+      const monthlyInterest = (mgAmountValue * mgRateValue) / 12 / 100;
+      const totalInterest = monthlyInterest * 12 * mgTermValue;
+      results = { monthlyInterest, totalInterest };
+    } else {
+      results = false;
     }
-    setMonthlyRepayment(monthlyPayment);
-    console.log(totalCost);
+    console.log(results);
+    setResultsToDisplay(results);
   };
   return (
     <LayoutChall
       className={'font-plusjakarta font-medium bg-[#e2f3fc] text-[#122e3f]'}
     >
-      <section className="w-full h-full bg-white md:rounded-xl flex flex-col justify-between md:flex-row md:h-[500px] md:w-[80%]">
+      <section className="w-full h-full bg-white md:rounded-xl flex flex-col justify-between md:flex-row md:h-[500px] md:w-[90%] lg:w-[80%]">
         {/* section : form */}
-        <div className="md:w-1/2 ">
+        <div className="md:w-1/2 text-sm lg:text-base ">
           <div className="w-[90%] mt-6 pb-10 mx-auto md:w-[80%]">
             <div className="flex flex-wrap justify-between text-[#122e3f] px-2 ">
               <h1 className="font-bold text-2xl">Morgage Calculator</h1>
@@ -202,27 +172,14 @@ const MortgageRepayment = () => {
         {/* section : display result */}
         <div className="bg-[#122e3f] w-full h-full flex md:w-1/2 md:rounded-r-xl md:rounded-bl-[5rem] ">
           {/* completed result */}
-          <div className="flex flex-col  mt-6 pb-10 gap-6 text-white w-[90%]  mx-auto md:h-[80%] md:w-[80%]">
-            <h2 className="text-2xl font-bold">Your results</h2>
-            <p className="text-[#9abed4] text-sm md:text-base">
-              Your results are shown below based on the information you
-              provided. To adjust the results, edit the form and click
-              “calculate repayments” again.
-            </p>
-            <div className="bg-[#001f33] px-4 py-4 flex-grow border-t-2 border-[#d7da2e] rounded-lg  md:px-8 md:py-8">
-              <p className="text-sm text-[#9abed4]">Your monthly repayments</p>
-              <p className="text-[#d7da2e] font-bold text-4xl py-2">
-                {parseFloat(monthlyRepayment).toFixed(2)} €
-              </p>
-              <span className="h-[1px] w-full block bg-[#9abed4] my-2" />
-              <p className="text-sm text-[#9abed4]">
-                Total you&apos;ll repay over the term
-              </p>
-              <p className="text-white font-bold text-xl py-2">
-                {parseFloat(monthlyRepayment).toFixed(2)} €
-              </p>
-            </div>
-          </div>
+          {resultsToDisplay ? (
+            <RepaymentCompleted
+              resultsToDisplay={resultsToDisplay}
+              selectedType={selectedType}
+            />
+          ) : (
+            <p className="text-white">undefined</p>
+          )}
         </div>
       </section>
     </LayoutChall>
