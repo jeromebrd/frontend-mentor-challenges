@@ -1,9 +1,10 @@
 import LayoutChall from '../../../components/LayoutChall';
 import TypeChoice from './components/TypeChoice';
-import RepaymentCompleted from './components/RepaymentCompleted';
+import CompletedResults from './components/CompletedResults';
 import { useState } from 'react';
 import { calculateMonthlyPayment, calculateTotalCost } from './utils/utils';
 import iconCalculator from './img/icon-calculator.svg';
+import EmptyResults from './components/EmptyResults';
 
 /* Lime: #d7da2e
 Red: #d73327
@@ -21,12 +22,14 @@ const MortgageRepayment = () => {
   const [mgRateValue, setMgRateValue] = useState('');
   const [selectedType, setSelectedType] = useState('');
   const [resultsToDisplay, setResultsToDisplay] = useState(false);
+  const [isSubmited, setIsSubmited] = useState(false);
 
   const clearAll = () => {
     setMgAmountValue('');
     setMgTermValue('');
     setMgRateValue('');
     setSelectedType('');
+    setIsSubmited(false);
   };
 
   const handleSubmit = (e) => {
@@ -53,6 +56,7 @@ const MortgageRepayment = () => {
       results = false;
     }
     console.log(results);
+    setIsSubmited(true);
     setResultsToDisplay(results);
   };
   return (
@@ -149,12 +153,16 @@ const MortgageRepayment = () => {
                   title={'Repayment'}
                   selectedType={selectedType}
                   setSelectedType={setSelectedType}
+                  isSubmited={isSubmited}
+                  setIsSubmited={setIsSubmited}
                 />
                 <TypeChoice
                   label={'interest'}
                   title={'Interest Only'}
                   selectedType={selectedType}
                   setSelectedType={setSelectedType}
+                  isSubmited={isSubmited}
+                  setIsSubmited={setIsSubmited}
                 />
               </div>
               {/* SUBMIT */}
@@ -172,13 +180,13 @@ const MortgageRepayment = () => {
         {/* section : display result */}
         <div className="bg-[#122e3f] w-full h-full flex md:w-1/2 md:rounded-r-xl md:rounded-bl-[5rem] ">
           {/* completed result */}
-          {resultsToDisplay ? (
-            <RepaymentCompleted
+          {resultsToDisplay && isSubmited ? (
+            <CompletedResults
               resultsToDisplay={resultsToDisplay}
               selectedType={selectedType}
             />
           ) : (
-            <p className="text-white">undefined</p>
+            <EmptyResults />
           )}
         </div>
       </section>

@@ -1,7 +1,21 @@
 import PropTypes from 'prop-types';
 
-const TypeChoice = ({ label, title, selectedType, setSelectedType }) => {
+const TypeChoice = ({
+  label,
+  title,
+  selectedType,
+  setSelectedType,
+  isSubmited,
+  setIsSubmited,
+}) => {
   const isChecked = selectedType === label;
+
+  const handleClick = () => {
+    if (isSubmited) {
+      setIsSubmited(false);
+    }
+    setSelectedType(label);
+  };
   return (
     <div
       className={`border cursor-pointer ${
@@ -9,14 +23,14 @@ const TypeChoice = ({ label, title, selectedType, setSelectedType }) => {
           ? 'border-[#d7da2e] bg-[#d7da2e] bg-opacity-15'
           : 'border-[#4d6e7e]'
       } rounded-md px-4 py-2 h-10 flex  items-center gap-4`}
-      onClick={() => setSelectedType(label)}
+      onClick={handleClick}
     >
       <input
         type="radio"
         name="type"
         id={label}
         checked={isChecked}
-        onChange={() => setSelectedType(label)}
+        onChange={handleClick}
         className={'peer hidden'}
       />
       <span
@@ -37,6 +51,8 @@ TypeChoice.propTypes = {
   label: PropTypes.string.isRequired,
   selectedType: PropTypes.string.isRequired,
   setSelectedType: PropTypes.func.isRequired,
+  isSubmited: PropTypes.bool.isRequired,
+  setIsSubmited: PropTypes.func.isRequired,
 };
 
 export default TypeChoice;
